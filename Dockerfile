@@ -23,7 +23,7 @@ RUN sudo apt-get install -y nodejs
 RUN npm install -g diff-so-fancy
 
 # CREATION user sraleik
-RUN useradd --shell /usr/bin/fish -u 1000 -o -c "" -m sraleik
+RUN useradd --shell /bin/bash -u 1000 -o -c "" -m sraleik
 RUN usermod -aG sudo sraleik
 RUN echo 'sraleik ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
