@@ -1,13 +1,13 @@
 FROM ubuntu:16.04
 MAINTAINER Sraleik <sraleik@gmail.com>
 
-RUN locale-gen fr_FR.UTF-8 
+RUN locale-gen fr_FR.UTF-8
 
-ENV TZ=Europe/Paris
-ENV LANG fr_FR.UTF-8
-ENV LANGUAGE fr_FR.UTF-8
-ENV LC_ALL fr_FR.UTF-8
-ENV LC_CTYPE fr_FR.UTF-8
+ENV TZ=Europe/Paris \
+ LANG=fr_FR.UTF-8 \
+ LANGUAGE=fr_FR.UTF-8 \
+ LC_ALL=fr_FR.UTF-8 \
+ LC_CTYPE=fr_FR.UTF-8
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
