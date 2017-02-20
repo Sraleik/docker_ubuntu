@@ -2,10 +2,12 @@ FROM registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple
 MAINTAINER Sraleik <sraleik@gmail.com>
 
 RUN apt-add-repository ppa:fish-shell/release-2 -y && \
+    apt-add-repository ppa:neovim-ppa/stable -y && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get --no-install-recommends -yq install \
-      fish && \
+      fish \
+      neovim && \
     rm -rf /var/lib/apt/lists/*
 
 # INSTALL node and npm
@@ -41,7 +43,11 @@ RUN git config --global user.email "nicolas.rotier@gmail.com" && \
 RUN mkdir -p /home/sraleik/.config && sudo chown -R sraleik:sraleik /home/sraleik/.config
 WORKDIR /home/sraleik/.config
 
+# CONFIG fish 
 RUN git clone https://gitlab.com/Sraleik/fishConfig.git fish && cd fish && git checkout docker
+
+# CONFIG nvim 
+RUN git clone https://gitlab.com/Sraleik/nvim_config.git nvim 
 
 WORKDIR /home/sraleik/
 
