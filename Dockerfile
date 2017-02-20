@@ -1,6 +1,13 @@
 FROM registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple
 MAINTAINER Sraleik <sraleik@gmail.com>
 
+RUN locale-gen fr_FR.UTF-8
+ENV LANG fr_FR.UTF-8
+ENV LANGUAGE fr_FR.UTF-8
+ENV LC_ALL fr_FR.UTF-8
+ENV LC_CTYPE fr_FR.UTF-8
+
+
 RUN apt-add-repository ppa:fish-shell/release-2 -y && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
@@ -41,6 +48,8 @@ RUN git config --global user.email "nicolas.rotier@gmail.com" && \
 RUN mkdir -p /home/sraleik/.config && sudo chown -R sraleik:sraleik /home/sraleik/.config
 WORKDIR /home/sraleik/.config
 
-RUN git clone https://gitlab.com/Sraleik/fishConfig.git fish
+RUN git clone https://gitlab.com/Sraleik/fishConfig.git fish && cd fish && git checkout docker
 
 WORKDIR /home/sraleik/
+
+CMD ["/usr/bin/fish"]
