@@ -5,9 +5,7 @@ RUN locale-gen fr_FR.UTF-8
 
 ENV TZ=Europe/Paris \
  LANG=fr_FR.UTF-8 \
- LANGUAGE=fr_FR.UTF-8 \
- LC_ALL=fr_FR.UTF-8 \
- LC_CTYPE=fr_FR.UTF-8
+ LC_ALL=fr_FR.UTF-8 
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
