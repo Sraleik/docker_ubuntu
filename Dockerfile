@@ -21,7 +21,6 @@ RUN usermod -aG sudo sraleik
 RUN echo 'sraleik ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER sraleik
-WORKDIR /home/sraleik
 
 RUN git config --global user.email "nicolas.rotier@gmail.com" && \
     git config --global user.name "Sraleik" && \
@@ -38,3 +37,10 @@ RUN git config --global user.email "nicolas.rotier@gmail.com" && \
     git config --global color.diff-highlight.oldHighlight "red bold 52" && \
     git config --global color.diff-highlight.newNormal "green bold" && \
     git config --global color.diff-highlight.newHighlight "green bold 22"
+
+RUN mkdir -p /home/sraleik/.config && sudo chown -R sraleik:sraleik /home/sraleik/.config
+WORKDIR /home/sraleik/.config
+
+RUN git clone https://gitlab.com/Sraleik/fishConfig.git fish
+
+WORKDIR /home/sraleik/
