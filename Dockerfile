@@ -9,6 +9,7 @@ RUN apt-add-repository ppa:fish-shell/release-2 -y && \
       python3-dev \
       python3-pip \
       python3-setuptools \
+      python3-wheel \
       build-essential \
       fish \
       neovim && \
