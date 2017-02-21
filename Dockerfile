@@ -6,6 +6,10 @@ RUN apt-add-repository ppa:fish-shell/release-2 -y && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get --no-install-recommends -yq install \
+      python3-dev \
+      python3-pip \
+      python3-setuptools \
+      build-essential \
       fish \
       neovim && \
     rm -rf /var/lib/apt/lists/*
@@ -42,6 +46,9 @@ RUN git config --global user.email "nicolas.rotier@gmail.com" && \
 
 RUN mkdir -p /home/sraleik/.config && sudo chown -R sraleik:sraleik /home/sraleik/.config
 WORKDIR /home/sraleik/.config
+
+# INSTALL config thefuck 
+RUN sudo -H pip3 install thefuck 
 
 # CONFIG fish 
 RUN git clone https://gitlab.com/Sraleik/fishConfig.git fish && cd fish && git checkout docker
