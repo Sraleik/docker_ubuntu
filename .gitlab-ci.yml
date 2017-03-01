@@ -39,7 +39,7 @@ test_master:
 test_dev:
   stage: test
   only:
-    - dev_versoin 
+    - dev_version 
   script:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test 
     - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /root/blank_test.sh
