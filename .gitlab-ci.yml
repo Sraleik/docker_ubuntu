@@ -1,8 +1,15 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+- build
+
 before_script:
-  - apt-get update -qq && apt-get install -y -qq curl
-  - curl -fsSL https://get.docker.com/ | sh
   - docker -v
 
-build_master:
+build:
+  stage: build
   script:
     - docker build -t registry.gitlab.com/Sraleik/docker_ubuntu:16.04-blank .
