@@ -10,6 +10,7 @@ stages:
 
 before_script:
   - docker -v
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
 
 build_master:
   stage: build
