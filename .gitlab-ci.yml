@@ -9,7 +9,16 @@ stages:
 before_script:
   - docker -v
 
-build:
+build_master:
   stage: build
+  only:
+    - master
   script:
     - docker build -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-blank .
+
+build_dev:
+  stage: build
+  only:
+    - dev_version
+  script:
+    - docker build -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev .
