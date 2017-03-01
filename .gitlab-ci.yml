@@ -17,8 +17,8 @@ build_master:
   only:
     - master
   script:
-    - docker build -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-blank-test .
-    - docker push registry.gitlab.com/sraleik/docker_ubuntu:16.04-blank-test
+    - docker build -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test .
+    - docker push registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test
 
 build_dev:
   stage: build
@@ -27,3 +27,19 @@ build_dev:
   script:
     - docker build -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test .
     - docker push -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test
+
+test_master:
+  stage: test
+  only:
+    - master
+  script:
+    - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test 
+    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test /root/blank_test.sh
+      
+test_dev:
+  stage: test
+  only:
+    - dev_versoin 
+  script:
+    - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test 
+    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /root/blank_test.sh
