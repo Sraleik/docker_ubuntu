@@ -12,7 +12,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -yq install \
         gawk \
-        git \
+        test d'un test fail
         vim-tiny \
         sudo \
         curl \
