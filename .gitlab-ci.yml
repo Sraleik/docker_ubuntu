@@ -31,7 +31,7 @@ build_dev:
     - dev_test
   script:
     - docker build -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test .
-    - docker push -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test
+    - docker push registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test
 
 test_simple:
   stage: test
@@ -57,8 +57,8 @@ release_simple:
     - master
   script:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test 
-    - docker tag registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test   registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-latest
-    - docker push -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-latest
+    - docker tag registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test   registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple
+    - docker push registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple
     
 release_dev:
   stage: release
@@ -66,6 +66,6 @@ release_dev:
     - dev_version 
   script:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test 
-    - docker tag registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test   registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-latest
-    - docker push -t registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-latest
+    - docker tag registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test   registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev
+    - docker push registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev
     
