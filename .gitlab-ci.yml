@@ -49,7 +49,7 @@ test_dev:
     - dev_test
   script:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test 
-    - docker run --user root registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /root/blank_test.sh
+    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /root/blank_test.sh
 
 release_simple:
   stage: release
