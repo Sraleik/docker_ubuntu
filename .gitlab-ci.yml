@@ -59,6 +59,7 @@ release_simple:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test 
     - docker tag registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test   registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple
     - docker push registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple
+    - curl --request POST --form token=TOKEN --form ref=dev_version https://gitlab.example.com/api/v4/projects/$CI_PIPELINE_ID/trigger/pipeline
     
 release_dev:
   stage: release
