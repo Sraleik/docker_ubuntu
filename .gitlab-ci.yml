@@ -40,7 +40,7 @@ test_simple:
     - simple_test
   script:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test 
-    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test /banane/blank_test.sh
+    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test /test/blank_test.sh
       
 test_dev:
   stage: test
@@ -49,7 +49,7 @@ test_dev:
     - dev_test
   script:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test 
-    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /banane/blank_test.sh
+    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /test/blank_test.sh
 
 release_simple:
   stage: release
