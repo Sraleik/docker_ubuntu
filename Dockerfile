@@ -19,4 +19,5 @@ RUN apt-get update && \
         software-properties-common && \
     rm -rf /var/lib/apt/lists/*
 
-ADD blank_test.sh /root/blank_test.sh
+ADD blank_test.sh /test/blank_test.sh
+RUN chmod -R 777 /test
