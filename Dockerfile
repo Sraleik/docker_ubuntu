@@ -59,6 +59,6 @@ RUN git clone https://gitlab.com/Sraleik/nvim_config.git nvim
 
 WORKDIR /home/sraleik/
 
-ADD dev_test.sh
+ADD dev_test.sh /test/dev_test.sh
 
 CMD ["/usr/bin/fish"]
