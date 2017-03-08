@@ -42,7 +42,7 @@ test_simple:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test 
     - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-simple-test /test/blank_test.sh
       
-test_dev:
+test_dev_no_regression:
   stage: test
   only:
     - dev_version 
@@ -50,6 +50,15 @@ test_dev:
   script:
     - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test 
     - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /test/blank_test.sh
+      
+test_dev:
+  stage: test
+  only:
+    - dev_version 
+    - dev_test
+  script:
+    - docker pull registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test 
+    - docker run registry.gitlab.com/sraleik/docker_ubuntu:16.04-dev-test /test/dev_test.sh
 
 release_simple:
   stage: release
